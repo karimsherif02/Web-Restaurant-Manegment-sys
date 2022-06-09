@@ -1,5 +1,5 @@
 <?php
-include "Menu.php";
+include"Menu.php";
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,10 +16,10 @@ $result = mysqli_query($conn,$query);
 //Add:
 if(isset($_POST['Add']))
 {
- // $ID=$_POST['ID'];
   $Name=$_POST['Name'];
 	$Status=$_POST['Status'];
-  $Add="INSERT INTO cashiers(name,Status) VALUES ('$Name','$Status')";
+	$Account=$_POST['Account'];
+  $Add="INSERT INTO cashiers(name,Status,Account) VALUES ('$Name','$Status','$Account')";
   if($conn->query($Add)==false)
   {
   echo "Error updating record: " . $conn->error;
@@ -29,7 +29,23 @@ else
 	 echo '<script>alert("succesfully")</script>';
 }
 }
-
+//DISABLE:
+if(isset($_POST['Disable']))
+{
+  $ID=$_POST['ID'];
+  //$name=$_POST['name'];
+//$Status=$_POST['Status'];
+  $Account=$_POST['Account'];
+  $Querydis="UPDATE  cashiers set Account='$Account' WHERE ID='$ID'";
+  if($conn->query($Querydis)==true)
+  {
+echo '<script>alert("succesfully")</script>';
+} 
+else
+ {
+  echo "Error updating record: " . $conn->error;
+}
+}
 ?>
 
 <html>
@@ -118,6 +134,7 @@ cursor: pointer;
 	<th>ID</th>
 	<th>Name</th>
 	<th>Status</th>
+	<th>Account</th>
 	 <br><br><br><br>
 </tr>
 
@@ -126,17 +143,21 @@ cursor: pointer;
 
  <form
  <form action=" " method="post">
+ 
+ <label for="ID">ID</label>
+<input type="text" placeholder="ID" name="ID" id="ID">
 
 <label for="Name">Name</label>
-<input type="text" placeholder="Name" name="Name" id="Name"required="">
-
+<input type="text" placeholder="Name" name="Name" id=">
 <label for="Status">status</label>
-<input type="text" placeholder="status" name="Status" id="Status" required="">
+<input type="text" placeholder="status" name="Status" id="Status" >
 
+<label for="Account">Account</label>
+<input type="text" placeholder="status" name="Account" id="Account" value="enabled">
 
 <button type="submit"name="Add" id="Add">Add</button>
 
-
+<button type="submit"name="Disable" id="Disable">Disable/Enable</button>
 <br>
 </form>
 </body>
@@ -151,7 +172,8 @@ while($row = mysqli_fetch_array($result))
   
 	<td><?= $row['ID']; ?></td>
 	<td><?= $row['name']; ?></td>
-	<td><?=  $row['Status']; ?></td>	 
+	<td><?=  $row['Status']; ?></td>
+	<td><?=  $row['Account']; ?></td>		
 </tr>
 <?php
  
