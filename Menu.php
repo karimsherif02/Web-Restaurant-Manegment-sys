@@ -1,46 +1,37 @@
 <html>
 <head>  
-   
-    <div class="fixed-header">
-        <div class="container">
-            <nav>
-                <a href="AdminHomePage.php">Home</a>
-                <a href="ViewComments.php">View Comments</a>
-                <a href="ViewReports.php">View Reports</a>
-                <a href="Promotion.php">Promotions</a>
-				<a href="addnewcashier.php">Add New Cashier</a>
-            </nav>
-        </div>
-    </div> 
-    <div class="fixed-footer">
-        <div class="container">Copyright &copy; 2022 Your Company</div>        
-    </div>
+   <div class="topnav">
+  <a href="QCHomePage.php">QC-Home</a>
+  <a  href="#news">View Comments</a>
+  <a  href="#contact">Veiw Reports</a>
+  <a href="Promotion.php">Promotions</a>
+  <a  href="addnewcashier.php">Add New Cashier </a>
+</div>
 </head>
 <style>
-     .fixed-header, .fixed-footer{
-        width: 100%;
-        position: fixed;        
-        background: black;
-        padding: 10px 0;
-        color: white;
-		
-    }
-    .fixed-header{
-        top: 0;
-		
-    }
-    .fixed-footer{
-        bottom: 0;
-    }
-    .container{
-        width: 80%;
-        margin: 0 auto; 
-    }
-    nav a{
-        color: white;
-        text-decoration: none;
-        padding: 7px 25px;
-        display: inline-block;
-    }
+    /* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
 </style>
 </html>
